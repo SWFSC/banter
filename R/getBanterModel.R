@@ -5,7 +5,7 @@
 #' @param model name of model to extract. Default is \code{"event"} 
 #'   to extract the event-level model. Can also be the name of a detector.
 #' 
-#' @return a \code{\link{randomForest}} model object.
+#' @return a \code{\link[randomForest]{randomForest}} model object.
 #' 
 #' @author Eric Archer \email{eric.archer@@noaa.gov}
 #' 

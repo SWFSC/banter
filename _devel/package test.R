@@ -6,8 +6,8 @@ library(rfPermute)
 ## test package example data
 
 data(train.data)
-ex.mdl <- initBanterModel(train.data$events) %>%
-  addBanterDetector(train.data$detectors, ntree = 100, sampsize = 1) %>%
+ex.mdl <- initBanterModel(train.data$events) |>
+  addBanterDetector(train.data$detectors, ntree = 100, sampsize = 1) |>
   runBanterModel(ntree = 100, sampsize = 1)
 summary(ex.mdl)
 

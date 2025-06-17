@@ -1,6 +1,5 @@
 #' banter
 #' 
-#' @docType package
 #' @name banter-package
 #' @aliases banter
 #' @title BioAcoustic EveNT ClassifiER
@@ -9,10 +8,10 @@
 #'   of dolphins in the California Current using whistles, echolocation clicks,
 #'   and burst pulses. Marine Mammal Science 33:520-540. doi:10.1111/mms.12381
 #' @importFrom rlang .data
-#' @importFrom magrittr %>%
 #' @importFrom methods new
 #' @keywords package
 NULL
+"_PACKAGE"
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage(

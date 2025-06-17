@@ -44,7 +44,7 @@ runBanterModel <- function(x, ntree, sampsize = 1) {
       as.data.frame(d@model$votes / rowSums(d@model$votes)), 
       stringsAsFactors = FALSE
     )
-  }, simplify = FALSE) %>% 
+  }, simplify = FALSE) |> 
     .meanVotes()
   
   # Check if any columns need to be removed because of missing data
@@ -60,38 +60,38 @@ runBanterModel <- function(x, ntree, sampsize = 1) {
   }
   
   # construct full data to predict
-  df <- df %>% 
-    dplyr::left_join(detector.prop, by = "event.id") %>% 
+  df <- df |> 
+    dplyr::left_join(detector.prop, by = "event.id") |> 
     dplyr::left_join(detector.votes, by = "event.id") 
   
   # add call rate columns if duration exists and there is no missing data
   if("duration" %in% colnames(df)) {
     if(all(!is.na(df$duration))) {
-      df <- df %>% 
+      df <- df |> 
         dplyr::left_join(
-          numCalls(x, "event") %>% 
+          numCalls(x, "event") |> 
             tidyr::pivot_longer(
               -.data$event.id, 
               names_to = "detector", 
               values_to = "num"
-            ) %>% 
+            ) |> 
             dplyr::left_join(
               dplyr::select(df, "event.id", "duration"), 
               by = "event.id"
-            ) %>% 
+            ) |> 
             dplyr::mutate(
               detector = gsub("num.", "rate.", .data$detector),
               num = .data$num / .data$duration
-            ) %>% 
-            dplyr::select(-.data$duration) %>% 
+            ) |> 
+            dplyr::select(-.data$duration) |> 
             tidyr::pivot_wider(names_from = "detector", values_from = "num"),
           by = "event.id"
         )
     }
   }
       
-  df <- df %>% 
-    stats::na.omit() %>% 
+  df <- df |> 
+    stats::na.omit() |> 
     dplyr::mutate(species = as.character(.data$species)) 
   
   # Get and check requested sample size
@@ -99,11 +99,11 @@ runBanterModel <- function(x, ntree, sampsize = 1) {
   if(is.null(sampsize)) return(x)
   
   # Remove species with insufficient sample sizes and finish data format
-  x@model.data <- df %>% 
-    dplyr::filter(.data$species %in% names(sampsize)) %>%
-    dplyr::mutate(species = factor(.data$species)) %>% 
-    tibble::column_to_rownames("event.id") %>% 
-    as.data.frame() %>% 
+  x@model.data <- df |> 
+    dplyr::filter(.data$species %in% names(sampsize)) |>
+    dplyr::mutate(species = factor(.data$species)) |> 
+    tibble::column_to_rownames("event.id") |> 
+    as.data.frame() |> 
     droplevels()
   
   x@model <- randomForest::randomForest(

@@ -39,16 +39,16 @@ numCalls <- function(x, by = c("species", "event")) {
   if(is.null(x@detectors)) stop("no detectors loaded in model.")
   by <- switch(match.arg(by), species = "species", event = "event.id")
   df <- lapply(names(x@detectors), function(d) {
-    x@data %>% 
-      dplyr::left_join(x@detectors[[d]]@ids, by = "event.id") %>% 
-      dplyr::group_by(dplyr::across(by)) %>% 
-      dplyr::summarize(n = sum(!is.na(.data$call.id)), .groups = "drop") %>% 
+    x@data |> 
+      dplyr::left_join(x@detectors[[d]]@ids, by = "event.id") |> 
+      dplyr::group_by(dplyr::across(by)) |> 
+      dplyr::summarize(n = sum(!is.na(.data$call.id)), .groups = "drop") |> 
       dplyr::mutate(detector = paste0("num.", d))
-  }) %>%
-    dplyr::bind_rows() %>% 
+  }) |>
+    dplyr::bind_rows() |> 
     tidyr::pivot_wider(names_from = "detector", values_from = "n")
   
-  replace(df, is.na(df), 0) %>% 
+  replace(df, is.na(df), 0) |> 
     as.data.frame()
 }
 
@@ -58,17 +58,17 @@ numCalls <- function(x, by = c("species", "event")) {
 propCalls <- function(x, by = c("species", "event")) {
   df <- numCalls(x, by)
   by <- colnames(df)[1]
-  df %>% 
+  df |> 
     tidyr::pivot_longer(
       -dplyr::all_of(by),
       names_to = "detector", 
       values_to = "n"
-    ) %>% 
-    dplyr::group_by(dplyr::across(by)) %>%
-    dplyr::mutate(prop = .data$n / sum(.data$n, na.rm = TRUE)) %>% 
-    dplyr::ungroup() %>% 
-    dplyr::select(-.data$n) %>% 
-    dplyr::mutate(detector = gsub("num.", "prop.", .data$detector)) %>% 
-    tidyr::pivot_wider(names_from = "detector", values_from = "prop") %>% 
+    ) |> 
+    dplyr::group_by(dplyr::across(by)) |>
+    dplyr::mutate(prop = .data$n / sum(.data$n, na.rm = TRUE)) |> 
+    dplyr::ungroup() |> 
+    dplyr::select(-.data$n) |> 
+    dplyr::mutate(detector = gsub("num.", "prop.", .data$detector)) |> 
+    tidyr::pivot_wider(names_from = "detector", values_from = "prop") |> 
     as.data.frame()
 }

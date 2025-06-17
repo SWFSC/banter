@@ -319,8 +319,8 @@ You can also save a separate data.frame for your training data that includes the
 ```{r, include=TRUE}
 casePredict <- casePredictions(bant.rf)
 
-misclass <- casePredict %>% 
-  filter(!is.correct) %>%
+misclass <- casePredict |> 
+  filter(!is.correct) |>
   select(id)
 ```
 

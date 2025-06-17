@@ -13,7 +13,7 @@ getBanterModel(x, model = "event")
 to extract the event-level model. Can also be the name of a detector.}
 }
 \value{
-a \code{\link{randomForest}} model object.
+a \code{\link[randomForest]{randomForest}} model object.
 }
 \description{
 Extract BANTER event or detector Random Forest model.

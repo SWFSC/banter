@@ -314,8 +314,8 @@ head(casePredict)
 This function returns a data frame with the original and predicted species for each event along with if the event was correctly classified and the assignment probabilities to each species.  
 To identify misclassified events, we just filter this data frame and grab the original event id.
 ```{r, include=TRUE}
-misclass <- casePredict %>% 
-  filter(!is.correct) %>%
+misclass <- casePredict |> 
+  filter(!is.correct) |>
   select(id)
 ```
 

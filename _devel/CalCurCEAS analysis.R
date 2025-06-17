@@ -6,8 +6,8 @@ library(gridExtra)
 
 load("data/calcurceas data.rdata")
 
-ccc.mdl <- initBanterModel(survey.train$events) %>% 
-  addBanterDetector(survey.train$detectors, ntree = 10000, sampsize = 100) %>% 
+ccc.mdl <- initBanterModel(survey.train$events) |> 
+  addBanterDetector(survey.train$detectors, ntree = 10000, sampsize = 100) |> 
   runBanterModel(ntree = 10000, sampsize = 3)
 
 pdf("CalCurCEAS plots.pdf")

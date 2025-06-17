@@ -32,7 +32,6 @@
 #' # number of events in burst pulse (bp) detector model
 #' numEvents(bant.mdl, "bp")
 #' 
-#' @importFrom magrittr %>%
 #' @importFrom rlang .data
 #' 
 #' @export
@@ -42,12 +41,12 @@ numEvents <- function(x, model = "event") {
   df <- if(model == "event") {
     x@data 
   } else {
-    x@data %>% 
+    x@data |> 
       dplyr::filter(.data$event.id %in% x@detectors[[model]]@ids$event.id)
   }
   spp.fac <- factor(df$species, levels = sort(unique(x@data$species)))
-  table(species = spp.fac) %>% 
-    as.data.frame() %>% 
-    stats::setNames(c("species", "num.events")) %>% 
+  table(species = spp.fac) |> 
+    as.data.frame() |> 
+    stats::setNames(c("species", "num.events")) |> 
     dplyr::mutate(species = as.character(.data$species)) 
 }

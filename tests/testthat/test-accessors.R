@@ -1,7 +1,7 @@
 context("model accessors")
 
 data(train.data)
-mdl <- initBanterModel(train.data$events) %>% 
+mdl <- initBanterModel(train.data$events) |> 
   addBanterDetector(
     train.data$detectors, 
     ntree = 50, sampsize = 1, num.cores = 1

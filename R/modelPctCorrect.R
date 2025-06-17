@@ -49,12 +49,12 @@ modelPctCorrect <- function(x) {
       model = model,
       stringsAsFactors = FALSE
     )
-  }) %>% 
-    dplyr::bind_rows() %>% 
+  }) |> 
+    dplyr::bind_rows() |> 
     dplyr::mutate(
       model = factor(.data$model, levels = c(names(x@detectors), "event"))
-    ) %>% 
-    tidyr::pivot_wider(names_from = "model", values_from = "pct.correct") %>% 
-    dplyr::mutate(species = factor(.data$species, levels = c(spp, "Overall"))) %>% 
+    ) |> 
+    tidyr::pivot_wider(names_from = "model", values_from = "pct.correct") |> 
+    dplyr::mutate(species = factor(.data$species, levels = c(spp, "Overall"))) |> 
     dplyr::arrange(.data$species)
 }

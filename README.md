@@ -20,7 +20,7 @@ To install the latest version from GitHub:
 if(!require('devtools')) install.packages('devtools')
 
 # install package from GitHub
-devtools::install_github('ericarcher/banter')
+devtools::install_github('SWFSC/banter')
 ```
 
 ### For a complete tutorial, run `banterGuide()`.
@@ -91,14 +91,18 @@ predict(bant.mdl, test.data)
 
 ### Contact
 
-* submit suggestions and bug-reports: <https://github.com/ericarcher/banter/issues>
-* send a pull request: <https://github.com/ericarcher/banter/>
-* e-mail: <eric.archer@noaa.gov>
+* submit suggestions and bug-reports: <https://github.com/SWFSC/banter/issues>
+* send a pull request: <https://github.com/SWFSC/banter/>
+* e-mail: <eric.ivan.archer@gmail.com>
 
 ### Reference
 Rankin, S., Archer, F., Keating, J. L., Oswald, J. N., Oswald, M., Curtis, A. and Barlow, J. (2017) Acoustic classification of dolphins in the California Current using whistles, echolocation clicks, and burst pulses. Mar Mam Sci, 33: 520-540. [doi:10.1111/mms.12381](https://onlinelibrary.wiley.com/doi/abs/10.1111/mms.12381)
 
-### version 0.9.6 (on CRAN)
+### version 0.9.8 (on CRAN)
+
+* move package to SWFSC GitHub site
+
+### version 0.9.6
 
 * changed behavior of `addBanterDetector()` to provide a warning instead of an error if a detector didn't have enough detections of a species and add all detectors that were valid. 
 * minor bug fixes and edits for CRAN

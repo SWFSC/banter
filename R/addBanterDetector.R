@@ -116,11 +116,11 @@ removeBanterDetector <- function(x, name) {
   start <- Sys.time()
   
   # Combine event data with call ids in detector
-  df <- x@data %>% 
-    dplyr::select(.data$event.id, .data$species) %>% 
-    dplyr::inner_join(data, by = "event.id") %>% 
-    dplyr::mutate(species = as.character(.data$species)) %>% 
-    as.data.frame
+  df <- x@data |> 
+    dplyr::select(.data$event.id, .data$species) |> 
+    dplyr::inner_join(data, by = "event.id") |> 
+    dplyr::mutate(species = as.character(.data$species)) |> 
+    as.data.frame()
   
   # Check if any columns need to be removed because of missing data
   to.remove <- sapply(df, function(i) any(is.na(i)))
@@ -143,12 +143,12 @@ removeBanterDetector <- function(x, name) {
   if(is.null(sampsize)) return(NULL)
 
   # Remove missing species and format columns
-  df <- df %>%
-    dplyr::filter(.data$species %in% names(sampsize)) %>%
-    dplyr::mutate(species = factor(.data$species)) %>%
-    dplyr::mutate(id = paste0(.data$event.id, ".", .data$call.id)) %>%
-    tibble::column_to_rownames("id") %>%
-    as.data.frame() %>%
+  df <- df |>
+    dplyr::filter(.data$species %in% names(sampsize)) |>
+    dplyr::mutate(species = factor(.data$species)) |>
+    dplyr::mutate(id = paste0(.data$event.id, ".", .data$call.id)) |>
+    tibble::column_to_rownames("id") |>
+    as.data.frame() |>
     droplevels()
 
   # Setup number of cores
@@ -157,7 +157,7 @@ removeBanterDetector <- function(x, name) {
   
   # Create random forest parameter list
   params <- list(
-    predictors = df %>% 
+    predictors = df |> 
       dplyr::select(-.data$event.id, -.data$call.id, -.data$species),
     response = df$species,
     sampsize = sampsize,

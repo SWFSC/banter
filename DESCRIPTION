@@ -4,13 +4,14 @@ Title: BioAcoustic eveNT classifiER
 Description: Create a hierarchical acoustic event species classifier out of  
   multiple call type detectors as described in 
   Rankin et al (2017) <doi:10.1111/mms.12381>.
-Version: 0.9.6
+Version: 0.9.8
 Authors@R: c(
-  EA = person("Eric", "Archer", email = "eric.archer@noaa.gov", role = c("aut", "cre")),
-  TS = person("Taiki", "Sakai", email = "taiki.sakai@noaa.gov", role = c("aut")))
+  EA = person("Eric", "Archer", email = "eric.ivan.archer@gmail.com", role = c("aut", "cre")),
+  SR = person("Shannon", "Rankin", email = "shannon.rankin@noaa.gov", role = c("aut")))
+URL: https://github.com/SWFSC/banter
+BugReports: https://github.com/SWFSC/banter/issues
 Depends:
-  R (>= 4.1.0),
-  magrittr
+  R (>= 4.1.0)
 Imports:
   dplyr (>= 1.0.6),
   ggplot2 (>= 3.3.3),
@@ -26,7 +27,5 @@ Imports:
   tidyr (>= 1.1.1)
 Suggests: testthat
 License: GNU General Public License
-RoxygenNote: 7.2.3
-URL: https://github.com/ericarcher/banter
-BugReports: https://github.com/ericarcher/banter/issues
+RoxygenNote: 7.3.2
 Encoding: UTF-8

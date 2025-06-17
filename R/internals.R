@@ -95,17 +95,17 @@
 #' 
 .meanVotes <- function(x) {
   df <- sapply(names(x), function(d) {
-    x[[d]] %>% 
+    x[[d]] |> 
       tidyr::pivot_longer(
         -.data$event.id,
         names_to = "species", 
         values_to = "prob"
-      ) %>% 
-      dplyr::mutate(species = paste0(d, ".", .data$species)) %>% 
-      dplyr::group_by(.data$event.id, .data$species) %>% 
+      ) |> 
+      dplyr::mutate(species = paste0(d, ".", .data$species)) |> 
+      dplyr::group_by(.data$event.id, .data$species) |> 
       dplyr::summarize(prob.mean = mean(.data$prob), .groups = "drop") 
-  }, simplify = FALSE) %>% 
-    dplyr::bind_rows() %>% 
+  }, simplify = FALSE) |> 
+    dplyr::bind_rows() |> 
     tidyr::pivot_wider(names_from = "species", values_from = "prob.mean") 
   
   replace(df, is.na(df), 0)
