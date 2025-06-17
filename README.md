@@ -3,7 +3,7 @@
 [![CRAN last week downloads](http://cranlogs.r-pkg.org/badges/last-week/banter?color=red)](https://cran.r-project.org/package=banter)
 [![CRAN last month downloads](http://cranlogs.r-pkg.org/badges/banter?color=red)](https://cran.r-project.org/package=banter)
 [![CRAN total downloads](http://cranlogs.r-pkg.org/badges/grand-total/banter?color=red)](https://cran.r-project.org/package=banter)  
-[![R-CMD-check](https://github.com/EricArcher/banter/workflows/R-CMD-check/badge.svg)](https://github.com/EricArcher/banter/actions)  
+[![R-CMD-check](https://github.com/SWFSC/banter/workflows/R-CMD-check/badge.svg)](https://github.com/SWFSC/banter/actions)  
 
 # banter
 
