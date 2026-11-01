@@ -98,7 +98,11 @@ predict(bant.mdl, test.data)
 ### Reference
 Rankin, S., Archer, F., Keating, J. L., Oswald, J. N., Oswald, M., Curtis, A. and Barlow, J. (2017) Acoustic classification of dolphins in the California Current using whistles, echolocation clicks, and burst pulses. Mar Mam Sci, 33: 520-540. [doi:10.1111/mms.12381](https://onlinelibrary.wiley.com/doi/abs/10.1111/mms.12381)
 
-### version 0.9.8 (on CRAN)
+### version 0.9.81 (on CRAN)
+
+* update `summary()` to fix change in `rfPermute::plotInbag()`.  
+
+### version 0.9.8
 
 * move package to SWFSC GitHub site
 
