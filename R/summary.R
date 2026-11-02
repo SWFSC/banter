@@ -89,8 +89,9 @@ summary.banter_model <- function(object, model = "event", n = 0.50, bins = 20, .
   suppressWarnings({
     inbag <- rfPermute::plotInbag(
       rf, bins = bins, replace = FALSE, sampsize = sampsize, plot = FALSE
-    ) +
+    )$plot +
       ggplot2::xlim(c(0, 100))
+    
     if(is.null(trace)) print(inbag) else {
       gridExtra::grid.arrange(trace, inbag, nrow = 2)
     } 

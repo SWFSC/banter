@@ -36,3 +36,4 @@ vignettes/*.pdf
 .DS_Store
 _devel/data
 _devel/PSAW_III
+.Rproj.user

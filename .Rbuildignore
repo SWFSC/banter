@@ -12,3 +12,4 @@ tar.gz$
 ^\.DS_Store$
 ^appveyor\.yml$
 ^CRAN-SUBMISSION$
+^cran-comments\.md$
